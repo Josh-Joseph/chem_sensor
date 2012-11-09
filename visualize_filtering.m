@@ -1,4 +1,4 @@
-function particles = visualize_particle_filtering
+function particles = visualize_filtering
 
 fname = 'Estimator_Logs/2012-11-04_210036.log'; chemical_position = [6.834999847225845 2.642499940935522];
 %fname = 'Estimator_Logs/2012-11-05_000525.log'; chemical_position = [35.42 -6.82];
