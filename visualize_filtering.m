@@ -7,7 +7,7 @@ fname = 'Estimator_Logs/2012-11-04_210036.log'; chemical_position = [6.834999847
 %fname = 'Estimator_Logs/2012-11-06_20-44-48.log'; chemical_position = [18.08 -14.11];
 
 % Read in Estimator Log
-[time,pos,posquat,mu,sigma,trace,C,newData,mean_resistance] = Estimator2Mat(fname);
+[time,pos,posquat,mu,sigma,trace,C,newData] = Estimator2Mat(fname);
 
 x_bounds = [.9*min([chemical_position(1); pos(:,1)]) 1.1*max([chemical_position(1); pos(:,1)])]; y_bounds = [1.1*min([chemical_position(2); pos(:,2)]) .9*max([chemical_position(2); pos(:,2)])];
 

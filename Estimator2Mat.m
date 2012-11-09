@@ -1,7 +1,7 @@
 
 
 % Read in Data file
-function [time,pos,posquat,mu,sigma,trace,C,newData,resistance] = Estimator2Mat(fname)
+function [time,pos,posquat,mu,sigma,trace,C,newData] = Estimator2Mat(fname)
 
 newData = dlmread(fname,'\t',1,0);
 time = newData(:,1);
