@@ -11,11 +11,10 @@ summary_distances = [];
 summary_mus = [];
 summary_stds = [];
 summary_colors = [];
-summary_c = [];
 
 for f_i = 1:length(all_files)
     f = ['Estimator_Logs/' all_files{f_i} '.log'];
-    [time,robot_position,robot_pose,sensor_measurements,c_vals] = reformat_raw_log_file(f);
+    [time,robot_position,robot_pose,sensor_measurements] = reformat_raw_log_file(f);
     
     these_angles = [];
     for j = 1:length(time)
@@ -52,13 +51,19 @@ for f_i = 1:length(all_files)
         valid_data = sensor_measurements(j,:) < 1e5;
         summary_mus = [summary_mus; mean(sensor_measurements(j,valid_data))];
         summary_stds = [summary_stds; std(sensor_measurements(j,valid_data))];
-        summary_c = [summary_c; c_vals(j)];
     end
+    all_distances = [
+    figure;
+    scatter(all_distances, all_resistances, 15, all_angles)
+    xlim([0 10])
+    ylim([1.5e4 6.5e4])
+    xlabel('distance')
+    ylabel('resistance reading')
 end
 
 colors = 'bgrcmyk';
 
-if 1
+if 0
     load TEST_DATA_11_3_12.mat
     all_distances = [all_distances; sqrt((xpos-xpos(end)).^2+(ypos-ypos(end)).^2)];
     all_resistances = [all_resistances; sensor2];
@@ -88,6 +93,7 @@ ylim([1.5e4 6.5e4])
 xlabel('distance')
 ylabel('resistance reading')
 
+
 f2 = figure;
 errorbar(summary_distances, summary_mus, summary_stds, '.')
 xlim([0 10])
@@ -95,17 +101,6 @@ ylim([2e4 7e4])
 xlabel('distance')
 ylabel('resistance reading')
 
-f3 = figure;
-plot(summary_distances, summary_c, '.')
-hold on
-%k = -17; v = 5; q = 6.2;
-k = -10.75; v = 2.5; q = .25;
-measurement_mu = q * exp(-summary_distances.^2 ./ v^2) + k;
-plot(summary_distances, measurement_mu, '.r')
-xlim([0 10])
-%ylim([2e4 7e4])
-xlabel('distance')
-ylabel('resistance reading')
 
 % f1 = figure;
 % plot([-1 7], [1e4 7e4], '.')

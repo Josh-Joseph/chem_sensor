@@ -1,0 +1,12 @@
+function [time,robot_position,robot_pose,sensor_measurements] = reformat_raw_log_file(f)
+
+raw_data = dlmread(f, '\t', 1, 0);
+time = raw_data(2:end,1);
+robot_position = raw_data(2:,2:4);
+robot_pose = raw_data(:,5:8);
+sensor_measurements = zeros(size(newData,1),1);
+for i = 2:length(resistance)
+    resistances = newData(i,22:end);
+    this_resistances(this_resistances == 0 | this_resistances > 1e5) = [];
+    resistance(i) = mean(this_resistances);
+end
