@@ -141,6 +141,7 @@ end
         plot(particles(mid_inds,1), particles(mid_inds,2), '.y', 'MarkerSize', 5)
         bottom_inds = particles(:,3) < bottom_w;
         plot(particles(bottom_inds,1), particles(bottom_inds,2), '.b', 'MarkerSize', 5)
+        title('top 1/4 probability mass is red, next 1/4 is yellow, bottom 1/2 is blue')
     end
 
 end
