@@ -3,7 +3,7 @@ close all
 all_files = {'2012-11-04_210036','2012-11-05_000525','2012-11-05_001625','2012-11-05_002724','2012-11-06_20-44-48'};
 all_chemical_positions = {[6.834999847225845 2.642499940935522], [35.42 -6.82], [35.42 -6.82], [35.42 -6.82], [18.08 -14.11]};
 
-use_measurement_offset = true;
+use_measurement_offset = false;
 
 all_distances = [];
 all_resistances = [];
@@ -15,7 +15,36 @@ summary_stds = [];
 summary_colors = [];
 summary_c = [];
 
-for f_i = 1:length(all_files)
+color_i = 1;
+if 1
+    load TEST_DATA_11_3_12.mat
+    measurement_offset = use_measurement_offset*mean(sensor2(1:30));
+    all_distances = [all_distances; sqrt((xpos-xpos(end)).^2+(ypos-ypos(end)).^2)];
+    all_resistances = [all_resistances; sensor2-measurement_offset];
+    all_colors = [all_colors; repmat(color_i, length(sensor2), 1)];
+    all_angles = [all_angles; zeros(length(sensor2), 1)];
+    color_i = color_i + 1;
+end
+if 1
+    load data1.mat
+    measurement_offset = use_measurement_offset*mean(sensor2(1:30));
+    all_distances = [all_distances; sqrt((xpos-trueSource(1)).^2+(ypos-trueSource(2)).^2)];
+    all_resistances = [all_resistances; sensor2-measurement_offset];
+    all_colors = [all_colors; repmat(color_i, length(sensor2), 1)];
+    all_angles = [all_angles; zeros(length(sensor2), 1)];
+    color_i = color_i + 1;
+end
+if 1
+    load data2.mat
+    measurement_offset = use_measurement_offset*mean(sensor2(1:30));
+    all_distances = [all_distances; sqrt((xpos-trueSource(1)).^2+(ypos-trueSource(2)).^2)];
+    all_resistances = [all_resistances; sensor2-measurement_offset];
+    all_colors = [all_colors; repmat(color_i, length(sensor2), 1)];
+    all_angles = [all_angles; zeros(length(sensor2), 1)];
+    color_i = color_i + 1;
+end
+
+for f_i = [1 2 4 5] %1:length(all_files)
     f = ['Estimator_Logs/' all_files{f_i} '.log'];
     [time,robot_position,robot_pose,sensor_measurements,c_vals] = reformat_raw_log_file(f);
     
@@ -36,7 +65,8 @@ for f_i = 1:length(all_files)
     norm_resistances = bsxfun(@minus, sensor_measurements, sensor_measurements(1,:));
     %all_resistances = [all_resistances; norm_resistances(:)];
     all_resistances = [all_resistances; sensor_measurements(:)-measurement_offset];
-    all_colors = [all_colors; repmat(f_i, length(tmp(:)), 1)];
+    all_colors = [all_colors; repmat(color_i, length(tmp(:)), 1)];
+    color_i = color_i + 1;
     
     for j = 1:length(time)
         summary_distances = [summary_distances; sqrt(sum(bsxfun(@minus, robot_position(j,1:2), all_chemical_positions{f_i}).^2, 2))];
@@ -56,15 +86,6 @@ end
 
 colors = 'bgrcmyk';
 
-if 1
-    load TEST_DATA_11_3_12.mat
-    measurement_offset = use_measurement_offset*mean(sensor2(1:30));
-    all_distances = [all_distances; sqrt((xpos-xpos(end)).^2+(ypos-ypos(end)).^2)];
-    all_resistances = [all_resistances; sensor2-measurement_offset];
-    all_colors = [all_colors; repmat(max(all_colors)+1, length(sensor2), 1)];
-    all_angles = [all_angles; zeros(length(sensor2), 1)];
-end
-
 f1 = figure;
 plot(all_distances, all_resistances, '.')
 hold on
@@ -72,16 +93,13 @@ xlim([0 10])
 if use_measurement_offset
     ylim([-4.5e4 1e4])
 else
-    ylim([-3e4 2e4])
+    ylim([1.5e4 6.5e4])
 end
 xlabel('distance')
 ylabel('resistance reading')
 for i = 1:length(all_distances)
     plot(all_distances(i), all_resistances(i), ['.' colors(all_colors(i))])
 end
-%load TEST_DATA_11_3_12.mat
-%%plot(sqrt((xpos-xpos(end)-mean(xpos(1:30))).^2+(ypos-ypos(end)-mean(ypos(1:30))).^2), sensor2, ['.' colors(max(all_colors)+1)])
-%plot(sqrt((xpos-xpos(end)).^2+(ypos-ypos(end)).^2), sensor2, ['.' colors(max(all_colors)+1)])
 
 if 0
     figure
@@ -98,7 +116,7 @@ xlim([0 10])
 if use_measurement_offset
     ylim([-4.5e4 1e4])
 else
-    ylim([-3e4 2e4])
+    ylim([1.5e4 6.5e4])
 end
 xlabel('distance')
 ylabel('resistance reading')

@@ -4,9 +4,12 @@ use_particle_filter = true;
 
 %fname = 'Estimator_Logs/2012-11-04_210036.log'; chemical_position = [6.834999847225845 2.642499940935522];
 %fname = 'Estimator_Logs/2012-11-05_000525.log'; chemical_position = [35.42 -6.82];
-%fname = 'Estimator_Logs/2012-11-05_001625.log'; chemical_position = [35.42 -6.82];
+fname = 'Estimator_Logs/2012-11-05_001625.log'; chemical_position = [35.42 -6.82];
 %fname = 'Estimator_Logs/2012-11-05_002724.log'; chemical_position = [35.42 -6.82];
-fname = 'Estimator_Logs/2012-11-06_20-44-48.log'; chemical_position = [18.08 -14.11];
+%fname = 'Estimator_Logs/2012-11-06_20-44-48.log'; chemical_position = [18.08 -14.11];
+% Read in Estimator Log
+[time,pos,~,~,~,~,C,~] = Estimator2Mat(fname);
+
 
 close all
 
@@ -15,8 +18,6 @@ measurement_std = 10;
 k = -17; v = 5; q = 6.2;
 %k = -10.75; v = 1; q = .75;
 
-% Read in Estimator Log
-[time,pos,~,~,~,~,C,~] = Estimator2Mat(fname);
 
 x_bounds = [.9*min([chemical_position(1); pos(:,1)]) 1.1*max([chemical_position(1); pos(:,1)])];
 y_bounds = [1.1*min([chemical_position(2); pos(:,2)]) .9*max([chemical_position(2); pos(:,2)])];
