@@ -1,4 +1,4 @@
-function visualize_filtering
+function particles = visualize_filtering
 
 close all
 
@@ -6,7 +6,7 @@ fname = 'Estimator_Logs/2012-11-04_210036.log'; chemical_position = [6.834999847
 fname = 'Estimator_Logs/2012-11-05_000525.log'; chemical_position = [35.42 -6.82];
 fname = 'Estimator_Logs/2012-11-05_001625.log'; chemical_position = [35.42 -6.82];
 fname = 'Estimator_Logs/2012-11-05_002724.log'; chemical_position = [35.42 -6.82];
-fname = 'Estimator_Logs/2012-11-06_20-44-48.log'; chemical_position = [18.08 -14.11];
+%fname = 'Estimator_Logs/2012-11-06_20-44-48.log'; chemical_position = [18.08 -14.11];
 
 % Read in Estimator Log
 [time,pos,posquat,mu,sigma,trace,C,newData] = Estimator2Mat(fname);
@@ -34,14 +34,7 @@ for t = 2:size(time)
     ylim(y_bounds);
     
     % apply the particle filter and draw the belief
-    disp('--------------------')
-    disp(max(particles(:,3)))
-    disp(mean(particles(:,3)))
-    disp(min(particles(:,3)))
     particles = particle_filter(robot_position, robot_measurement, particles);
-    disp(max(particles(:,3)))
-    disp(mean(particles(:,3)))
-    disp(min(particles(:,3)))
     
     % apply the kalman filter and draw the belief
     %[mu_est, cov_est] = kalman_filter(robot_position, robot_measurement, mu_est, cov_est);
@@ -98,6 +91,12 @@ p = normpdf(c, measurement_mu, measurement_std);
 
 function draw_particle_belief(particles)
 scatter(particles(:,1), particles(:,2), 10, particles(:,3))
+
+%n = sqrt(length(particles));
+%contour(reshape(particles(:,1),n,n), reshape(particles(:,2),n,n), reshape(particles(:,3),n,n)); 
+%colorbar
+
+
 hold on
 
 
