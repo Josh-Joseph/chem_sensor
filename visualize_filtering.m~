@@ -6,7 +6,7 @@ fname = 'Estimator_Logs/2012-11-04_210036.log'; chemical_position = [6.834999847
 %fname = 'Estimator_Logs/2012-11-05_000525.log'; chemical_position = [35.42 -6.82];
 %fname = 'Estimator_Logs/2012-11-05_001625.log'; chemical_position = [35.42 -6.82];
 %fname = 'Estimator_Logs/2012-11-05_002724.log'; chemical_position = [35.42 -6.82];
-fname = 'Estimator_Logs/2012-11-06_20-44-48.log'; chemical_position = [18.08 -14.11];
+%fname = 'Estimator_Logs/2012-11-06_20-44-48.log'; chemical_position = [18.08 -14.11];
 
 % Read in Estimator Log
 [time,pos,posquat,mu,sigma,trace,C,newData] = Estimator2Mat(fname);
@@ -26,7 +26,8 @@ for t = 2:size(time)
     % robot, look at the world
     robot_position = pos(t,1:2);
     robot_measurement = C(t);
-    %robot_measurement = ideal_measurement(robot_position, chemical_position);
+    
+    robot_measurement = ideal_measurement(robot_position, chemical_position);
     
     % draw robot position
     clf;
@@ -83,16 +84,12 @@ function particles = propogate_particles(particles)
 % not using this yet
 process_std = 0;
 
-function measurement_mu = ideal_measurement(robot_position, chemical_position)
-distance = sqrt((robot_position(1)-chemical_position(1))^2+(robot_position(2)-chemical_position(2))^2);
-k = -17; v = 5; q = 6.2;
-%k = -10.75; v = 1; q = .75;
-measurement_mu = q .* exp(-distance.^2 ./ v^2) + k;
+function C = robot_measurement = ideal_measurement(robot_position, chemical_position)
 
 function p = prob_C_given_distance(c, distance)
-measurement_std = 10;
-k = -17; v = 5; q = 6.2;
-%k = -10.75; v = 1; q = .75;
+measurement_std = .75;
+%k = -17; v = 5; q = 6.2;
+k = -10.75; v = 1; q = .75;
 measurement_mu = q .* exp(-distance.^2 ./ v^2) + k;
 p = normpdf(c, measurement_mu, measurement_std);
 

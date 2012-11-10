@@ -99,7 +99,7 @@ f3 = figure;
 plot(summary_distances, summary_c, '.')
 hold on
 %k = -17; v = 5; q = 6.2;
-k = -10.75; v = 2.5; q = .25;
+k = -10.75; v = 1; q = .75;
 measurement_mu = q * exp(-summary_distances.^2 ./ v^2) + k;
 plot(summary_distances, measurement_mu, '.r')
 xlim([0 10])
