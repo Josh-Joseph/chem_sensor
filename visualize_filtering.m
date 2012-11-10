@@ -38,6 +38,7 @@ for t = 2:size(time)
     particles = particle_filter(robot_position, robot_measurement, particles);
     
     % apply the kalman filter and draw the belief
+    % DOES NOT WORK YET
     %[mu_est, cov_est] = kalman_filter(robot_position, robot_measurement, mu_est, cov_est);
     
     pause;
