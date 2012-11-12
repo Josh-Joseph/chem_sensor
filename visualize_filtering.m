@@ -4,12 +4,14 @@ use_particle_filter = true;
 
 %fname = 'Estimator_Logs/2012-11-04_210036.log'; chemical_position = [6.834999847225845 2.642499940935522];
 %fname = 'Estimator_Logs/2012-11-05_000525.log'; chemical_position = [35.42 -6.82];
-fname = 'Estimator_Logs/2012-11-05_001625.log'; chemical_position = [35.42 -6.82];
+%fname = 'Estimator_Logs/2012-11-05_001625.log'; chemical_position = [35.42 -6.82];
 %fname = 'Estimator_Logs/2012-11-05_002724.log'; chemical_position = [35.42 -6.82];
-%fname = 'Estimator_Logs/2012-11-06_20-44-48.log'; chemical_position = [18.08 -14.11];
+fname = 'Estimator_Logs/2012-11-06_20-44-48.log'; chemical_position = [18.08 -14.11];
 % Read in Estimator Log
-[time,pos,~,~,~,~,C,~] = Estimator2Mat(fname);
+[time,pos,~,~,~,~,C,~] = Estimator2Mat_old(fname);
 
+fname = 'Estimator_Logs/estimator.log'; chemical_position = [4.1000 -6.7000];
+[time,pos,~,~,C,~] = Estimator2Mat(fname);
 
 close all
 
@@ -36,7 +38,7 @@ for t = 2:size(time)
     % robot, look at the world
     robot_position = pos(t,1:2);
     robot_measurement = C(t);
-    robot_measurement = ideal_measurement(robot_position, chemical_position);
+    %robot_measurement = ideal_measurement(robot_position, chemical_position);
     
     % draw robot position
     clf;
