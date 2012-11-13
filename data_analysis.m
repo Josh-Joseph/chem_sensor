@@ -1,3 +1,5 @@
+function data_analysis
+
 close all
 clear all
 
@@ -51,7 +53,6 @@ for run = 1:6
     subplot(2,1,2)
     d = linspace(0, max(dist), 100);
     measurement_mu = q * exp(-d.^2 ./ v^2) + k;
-    measurement_mu
     plot(d, measurement_mu, 'm')
     hold on
     plot(d, measurement_mu-measurement_std, '--m')
@@ -62,4 +63,15 @@ for run = 1:6
     xlabel('distance')
     ylabel('C')
     title(['autonomous-runs_11-12/' num2str(run) '/'])
+end
+
+    function [time,robot_position,robot_pose,sensor_measurements,c_vals] = reformat_raw_log_file(f)
+        raw_data = dlmread(f, '\t', 1, 0);
+        time = raw_data(:,1);
+        robot_position = raw_data(:,2:4);
+        robot_pose = raw_data(:,5:8);
+        sensor_measurements = raw_data(:,13:end);
+        sensor_measurements(:,any(sensor_measurements == 0,1)) = [];
+        c_vals = raw_data(:,12);
+    end
 end
