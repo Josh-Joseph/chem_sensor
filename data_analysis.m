@@ -1,7 +1,6 @@
 function data_analysis
 
 close all
-clear all
 
 bloodhound_directory_location = '/home/josh/Dropbox/Bloodhound/';
 
