@@ -45,6 +45,7 @@ for run = 1:6
         hold on
     end
     xlim([0 9])
+    ylim([1e4 5e4])
     xlabel('distance')
     ylabel('resistance')
     title(['autonomous-runs_11-12/' num2str(run) '/'])
@@ -59,6 +60,7 @@ for run = 1:6
     
     plot(dist, c_vals, 'o', 'MarkerSize', 6)
     xlim([0 9])
+    ylim([-11 -9])
     xlabel('distance')
     ylabel('C')
     title(['autonomous-runs_11-12/' num2str(run) '/'])
