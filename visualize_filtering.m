@@ -10,19 +10,22 @@ fname = 'Estimator_Logs/2012-11-06_20-44-48.log'; chemical_position = [18.08 -14
 % Read in Estimator Log
 [time,pos,~,~,~,~,C,~] = Estimator2Mat_old(fname);
 
-fname = 'Estimator_Logs/estimator.log'; chemical_position = [4.1000 -6.7000];
+fname = 'Estimator_Logs/estimator_run1_2012_11_11.log'; chemical_position = [4.1000 -6.7000];
+%fname = 'Estimator_Logs/estimator_run2_2012_11_11.log'; chemical_position = [4.9100 -2.4600];
+%fname = 'Estimator_Logs/estimator_run1_2012_11_12.log'; chemical_position = [8.58 0.42];
+%fname = 'Estimator_Logs/estimator_run2_2012_11_12.log'; chemical_position = [3.94, -0.10];
 [time,pos,~,~,C,~] = Estimator2Mat(fname);
 
 close all
 
 process_std = 0;
-measurement_std = 10;
-k = -17; v = 5; q = 6.2;
-%k = -10.75; v = 1; q = .75;
+measurement_std = 0.3830;
+%k = -17; v = 5; q = 6.2;
+k = -10.8534; v = 1.1386; q = .383;
 
 
-x_bounds = [.9*min([chemical_position(1); pos(:,1)]) 1.1*max([chemical_position(1); pos(:,1)])];
-y_bounds = [1.1*min([chemical_position(2); pos(:,2)]) .9*max([chemical_position(2); pos(:,2)])];
+x_bounds = [min([chemical_position(1); pos(:,1)])-5 max([chemical_position(1); pos(:,1)])+5];
+y_bounds = [min([chemical_position(2); pos(:,2)])-5 max([chemical_position(2); pos(:,2)])+5];
 
 % particle filter initialization
 n = 75; x = linspace(x_bounds(1), x_bounds(2), n)'; y = linspace(y_bounds(1), y_bounds(2), n)';
