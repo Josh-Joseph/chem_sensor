@@ -4,7 +4,7 @@ close all
 
 bloodhound_directory_location = '/home/josh/Dropbox/Bloodhound/';
 
-for run = 1:6
+for run = 6
     run_directory = [bloodhound_directory_location 'autonomous-runs_11-12/' num2str(run) '/'];
     [time,robot_position,robot_pose,sensor_measurements,c_vals] = reformat_raw_log_file([run_directory 'estimator.log']);
     switch run
@@ -25,6 +25,7 @@ for run = 1:6
             k = -10.690862495372969; q = 0.3748; v = 1.085; measurement_std = .09043;
         case 6
             chemical_location = [-2.4 -1.3];
+            chemical_location = [-2 -3.75];
             k = -10.656964357927036; q = 0.3748; v = 1.085; measurement_std = .09043;
             % to correct for that 15th strange data row
             time = time([1:14 16:end]);
@@ -34,9 +35,18 @@ for run = 1:6
             c_vals = c_vals([1:14 16:end]);
     end
     
-    
-    
     dist = sqrt(sum(bsxfun(@minus, robot_position(:,1:2), chemical_location).^2, 2));
+    
+    if 1
+        C = c_vals - k;
+        f = @(pars) mean((C- (pars(2).*exp(-dist.^2 ./ pars(1).^2)) ).^2);
+        options = optimset('MaxIter', 1e20);
+        par_est = fminsearch(f, [5 6.2], options);
+        v = par_est(1)
+        q = par_est(2)
+        sqrd_err = f(par_est);
+        measurement_std = sqrt(sqrd_err)
+    end
     
     f1 = figure;
     subplot(2,1,1)

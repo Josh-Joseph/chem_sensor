@@ -14,7 +14,13 @@ fname = 'Estimator_Logs/estimator_run1_2012_11_11.log'; chemical_position = [4.1
 %fname = 'Estimator_Logs/estimator_run2_2012_11_11.log'; chemical_position = [4.9100 -2.4600];
 %fname = 'Estimator_Logs/estimator_run1_2012_11_12.log'; chemical_position = [8.58 0.42];
 %fname = 'Estimator_Logs/estimator_run2_2012_11_12.log'; chemical_position = [3.94, -0.10];
+dirname = '/home/josh/Dropbox/Bloodhound/autonomous-runs_11-12/6/';
+fname = [dirname 'estimator.log']; fname_particles = [dirname 'particles.log']; chemical_position = [-2.7 -1.3];
 [time,pos,~,~,C,~] = Estimator2Mat(fname);
+% to correct for that 15th strange data row
+time = time([1:14 16:end]);
+pos = pos([1:14 16:end],:);
+C = C([1:14 16:end]);
 
 close all
 

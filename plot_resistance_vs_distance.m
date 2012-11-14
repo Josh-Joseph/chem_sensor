@@ -213,7 +213,6 @@ options = optimset('MaxIter', 1e20);
 par_est = fminsearch(f, [5 6.2], options);
 v = par_est(1);
 q = par_est(2);
-
 sqrd_err = f(par_est);
 measurement_std = sqrt(sqrd_err);
 
