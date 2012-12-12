@@ -39,8 +39,8 @@ for t = 1:size(time)
     % draw robot position
     clf;
     draw_robot(pos(1:t,1:2), chemical_position);
-    xlim(x_bounds);
-    ylim(y_bounds);
+    %xlim(x_bounds);
+    %ylim(y_bounds);
     
     % apply the particle filter and draw the belief
     particles = [particleLog_Mat(:,1), particleLog_Mat(:,2),particleLog_Mat(:,t+2)];
@@ -52,10 +52,10 @@ for t = 1:size(time)
 end
 
 function draw_robot(past_positions, chemical_position)
-plot(past_positions(:,1), past_positions(:,2), 'k', 'LineWidth', 1)
+plot(past_positions(:,1), past_positions(:,2), 'k', 'LineWidth', 2)
 hold on
-plot(past_positions(end,1), past_positions(end,2), 'kx', 'MarkerSize', 14)
-plot(chemical_position(1), chemical_position(2), 'kd', 'MarkerSize', 14)
+plot(past_positions(end,1), past_positions(end,2), 'kx', 'MarkerSize', 18)
+plot(chemical_position(1), chemical_position(2), 'k*', 'MarkerSize', 18)
 
 function draw_particle_belief(particles)
 %scatter(particles(:,1), particles(:,2), 10, particles(:,3))
