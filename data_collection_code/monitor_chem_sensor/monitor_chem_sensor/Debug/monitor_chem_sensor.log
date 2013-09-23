@@ -1,0 +1,25 @@
+﻿Build started 9/22/2010 3:26:37 PM.
+     1>Project "C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\monitor_chem_sensor\monitor_chem_sensor\monitor_chem_sensor.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\monitor_chem_sensor.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\users\josh\documents\my dropbox\active projects\chemical sensor\monitor_chem_sensor\monitor_chem_sensor\main.cpp(70): warning C4101: 'errMsg' : unreferenced local variable
+     1>c:\users\josh\documents\my dropbox\active projects\chemical sensor\monitor_chem_sensor\monitor_chem_sensor\main.cpp(72): warning C4101: 'frequency' : unreferenced local variable
+     1>c:\users\josh\documents\my dropbox\active projects\chemical sensor\monitor_chem_sensor\monitor_chem_sensor\main.cpp(71): warning C4101: 'enable5V' : unreferenced local variable
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\monitor_chem_sensor\Debug\monitor_chem_sensor.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\monitor_chem_sensor.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\monitor_chem_sensor\Debug\monitor_chem_sensor.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\monitor_chem_sensor\Debug\monitor_chem_sensor.lib" /MACHINE:X86 Debug\main.obj
+         USBtoI2C32.lib
+         LINK : C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\monitor_chem_sensor\Debug\monitor_chem_sensor.exe not found or not built by the last incremental link; performing full link
+         monitor_chem_sensor.vcxproj -> C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\monitor_chem_sensor\Debug\monitor_chem_sensor.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\monitor_chem_sensor\Debug\monitor_chem_sensor.exe;#1" /manifest Debug\monitor_chem_sensor.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug\monitor_chem_sensor.unsuccessfulbuild".
+         Touching "Debug\monitor_chem_sensor.lastbuildstate".
+     1>Done Building Project "C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\monitor_chem_sensor\monitor_chem_sensor\monitor_chem_sensor.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.40

@@ -1,0 +1,27 @@
+﻿Build started 10/22/2011 2:44:20 PM.
+     1>Project "C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\log_chem_sensor_data\log_chem_sensor_data\log_chem_sensor_data.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\log_chem_sensor_data.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\users\josh\documents\my dropbox\active projects\chemical sensor\log_chem_sensor_data\log_chem_sensor_data\main.cpp(60): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\time.inl(112) : see declaration of 'localtime'
+     1>c:\users\josh\documents\my dropbox\active projects\chemical sensor\log_chem_sensor_data\log_chem_sensor_data\main.cpp(72): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\time.inl(112) : see declaration of 'localtime'
+     1>c:\users\josh\documents\my dropbox\active projects\chemical sensor\log_chem_sensor_data\log_chem_sensor_data\main.cpp(42): warning C4101: 'str' : unreferenced local variable
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\log_chem_sensor_data\Debug\log_chem_sensor_data.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\log_chem_sensor_data.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\log_chem_sensor_data\Debug\log_chem_sensor_data.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\log_chem_sensor_data\Debug\log_chem_sensor_data.lib" /MACHINE:X86 Debug\main.obj
+         USBtoI2C32.lib
+         LINK : C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\log_chem_sensor_data\Debug\log_chem_sensor_data.exe not found or not built by the last incremental link; performing full link
+         log_chem_sensor_data.vcxproj -> C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\log_chem_sensor_data\Debug\log_chem_sensor_data.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\log_chem_sensor_data\Debug\log_chem_sensor_data.exe;#1" /manifest Debug\log_chem_sensor_data.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug\log_chem_sensor_data.unsuccessfulbuild".
+         Touching "Debug\log_chem_sensor_data.lastbuildstate".
+     1>Done Building Project "C:\Users\josh\Documents\My Dropbox\Active Projects\chemical sensor\log_chem_sensor_data\log_chem_sensor_data\log_chem_sensor_data.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:05.29

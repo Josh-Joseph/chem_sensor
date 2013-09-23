@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chem_sensor_comm", "chem_sensor_comm\chem_sensor_comm.vcxproj", "{D8768361-AF67-4E08-A428-06A84FB47221}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8768361-AF67-4E08-A428-06A84FB47221}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D8768361-AF67-4E08-A428-06A84FB47221}.Debug|Win32.Build.0 = Debug|Win32
+		{D8768361-AF67-4E08-A428-06A84FB47221}.Release|Win32.ActiveCfg = Release|Win32
+		{D8768361-AF67-4E08-A428-06A84FB47221}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
